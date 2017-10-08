@@ -7,9 +7,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import jdk.nashorn.internal.parser.JSONParser;
+//import jdk.nashorn.internal.parser.JSONParser;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
+import com.google.gson.*;
+
 
 public class APIConnector {
     private static String baseURL;
@@ -24,9 +26,9 @@ public class APIConnector {
         this.accessCode = accessCode;
     }
 
-    public static JSONObject getJSON(String urlString) {
+    public static JsonObject getJSON(String urlString) {
         JSONObject json = null;
-
+        JsonObject jObject = null;
         URL url;
         try {
             url = new URL(baseURL + urlString);
@@ -50,12 +52,13 @@ public class APIConnector {
             in.close();
 
             System.out.println(response.toString());
+            jObject = new JsonParser().parse(response.toString()).getAsJsonObject();
 
         } catch (Exception e) {
             System.out.println("Exception: " + e);
         }
 
-        return json;
+        return jObject;
 
     }
 
