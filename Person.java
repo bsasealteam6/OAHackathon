@@ -32,8 +32,8 @@ public class Person{
         }
 }
 
-    @Override
-    public boolean equals(Object obj) throws  {
+    /*@Override
+    public boolean equals(Object obj)  {
         try{
             Person otherPerson = (Person)obj;
             if(this.firstName.equals(otherPerson.firstName) && this.lastName.equals(otherPerson.lastName))
@@ -58,5 +58,5 @@ public class Person{
             e.printStackTrace();
             System.exit(1);
         }
-    }
+    }*/
 }
